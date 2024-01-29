@@ -1,0 +1,33 @@
+<div class="grid grid-nogutter surface-section text-800">
+    <div class="col-12 md:col-4 p-6 text-center md:text-left flex align-items-center ">
+        <section>
+            <span class="block text-6xl font-bold mb-1">Welcome</span>
+            <div class="text-6xl font-bold mb-3 subheader">to my about me</div>
+            <p class="mt-0 mb-4 line-height-3">See below for details on me</p>
+            
+            <button pButton pRipple label="Learn More" type="button" class="mr-3 p-button-raised">
+            </button>
+            <button pButton pRipple icon="fa-brands fa-github" label="Github" type="button" class="p-button-outlined" (click)="goToGithub()"></button>
+        </section>
+    </div>
+    <div class="col-12 md:col-8 overflow-hidden">
+        <img src="assets/images/logo.png" alt="Image" class="md:ml-auto block md:h-full" 
+        [style]="'border-top: solid; border-top-color: var(--paynes-gray); clip-path: polygon(10% 0, 100% 0%, 100% 100%, 0 100%)'">
+    </div>
+    <div class="col-12">
+        <div class="grid">
+            <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="col-12 animation-duration-1000">
+                <p-panel header="Professional Experience">
+                    </p-panel>
+            </div>
+            <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="col-12 animation-duration-1000">
+                <p-panel header="Personel Projects">
+                </p-panel>
+            </div>
+            <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="col-12 animation-duration-1000">
+                <p-panel header="Technical Skills">
+                </p-panel>
+            </div>
+        </div>
+    </div>
+</div>

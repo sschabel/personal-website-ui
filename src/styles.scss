@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Main Color Palatte SCSS HEX */
+$moonstone: #5c9eadff;
+$white: #ffffffff;
+$paynes-gray: #326273ff;
+$antiflash-white: #eeeeeeff;
+$atomic-tangerine: #e39774ff;
+$alice-blue: #E3F2FD;
+$davys-gray: #494850;
+$raisin-black: #2C2C34;
+
+/* Modified Main Color Palatte */
+$darker-moonstone: darken($moonstone, 25%);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #5c9eadff, #ffffffff, #326273ff, #eeeeeeff, #e39774ff);
+$gradient-right: linear-gradient(90deg, #5c9eadff, #ffffffff, #326273ff, #eeeeeeff, #e39774ff);
+$gradient-bottom: linear-gradient(180deg, #5c9eadff, #ffffffff, #326273ff, #eeeeeeff, #e39774ff);
+$gradient-left: linear-gradient(270deg, #5c9eadff, #ffffffff, #326273ff, #eeeeeeff, #e39774ff);
+$gradient-top-right: linear-gradient(45deg, #5c9eadff, #ffffffff, #326273ff, #eeeeeeff, #e39774ff);
+$gradient-bottom-right: linear-gradient(135deg, #5c9eadff, #ffffffff, #326273ff, #eeeeeeff, #e39774ff);
+$gradient-top-left: linear-gradient(225deg, #5c9eadff, #ffffffff, #326273ff, #eeeeeeff, #e39774ff);
+$gradient-bottom-left: linear-gradient(315deg, #5c9eadff, #ffffffff, #326273ff, #eeeeeeff, #e39774ff);
+$gradient-radial: radial-gradient(#5c9eadff, #ffffffff, #326273ff, #eeeeeeff, #e39774ff);
+
+/* Variables */
+:root {
+    --moonstone: #{$moonstone};
+    --white: #{$white};
+    --paynes-gray: #{$paynes-gray};
+    --antiflash-white: #{$antiflash-white};
+    --atomic-tangerine: #{$atomic-tangerine};
+
+    --darker-moonstone: #{$darker-moonstone};
+    --main-background-color: #{$paynes-gray};
+  }
+
+  /* Imports from other files */
+  @import "./assets/styles/light-theme";

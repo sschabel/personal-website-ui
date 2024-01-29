@@ -1,0 +1,8 @@
+<div class="topbar">
+    <ng-container *ngFor="let menuItem of menuItems">
+        <a [class]="menuItem.active ? 'active ' : ''" (click)="triggerAction(menuItem)">
+            <i [class]="menuItem.icon"></i>
+            {{menuItem.label}}
+        </a>
+    </ng-container>
+  </div>

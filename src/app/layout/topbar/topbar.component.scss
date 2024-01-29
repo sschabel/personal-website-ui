@@ -1,0 +1,23 @@
+.topbar {
+    background-color: var(--paynes-gray);
+    overflow: hidden;
+  }
+  
+  .topbar a {
+    float: left;
+    color: var(--white);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topbar a:hover {
+    background-color: var(--darker-moonstone);
+    color: var(--white);
+  }
+  
+  .topbar a.active {
+    background-color: var(--moonstone);
+    color: var(--white);
+  }
