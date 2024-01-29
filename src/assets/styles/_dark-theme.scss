@@ -1,5 +1,21 @@
 @import "./colors";
 
+/* Modified Main Color Palatte */
+$darker-paynes-gray: darken($paynes-gray, 25%);
+
+/* Theme-specific component colors */
+$footer-bg-color: $raisin-black;
+$footer-text-color: $white;
+$normal-button-bg-color: $paynes-gray;
+$outlined-button-text-color: $paynes-gray;
+$panel-header-color: $raisin-black;
+$panel-header-text-color: $white;
+$topbar-bg-color: $raisin-black;
+$topbar-text-color: $white;
+$topbar-hover-bg-color: $darker-paynes-gray;
+$topbar-hover-text-color: $white;
+$topbar-active-bg-color: $paynes-gray;
+$topbar-active-text-color: $white;
 
 /* SCSS Gradient */
 $gradient-top: linear-gradient(0deg, $rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
@@ -27,6 +43,14 @@ $gradient-radial: radial-gradient($rose-quartz, $alice-blue, $davys-gray, $raisi
     --daveys-gray: #{$davys-gray};
     --raisin-black: #{$raisin-black};
   
-    --darker-moonstone: #{$darker-moonstone};
-    --main-background-color: #{$paynes-gray};
+    --darker-paynes-gray: #{$darker-paynes-gray};
+
+    --footer-bg-color: #{$footer-bg-color};
+    --footer-text-color: #{$footer-text-color};
+    --topbar-bg-color: #{$topbar-bg-color};
+    --topbar-text-color: #{$topbar-text-color};
+    --topbar-hover-bg-color: #{$topbar-hover-bg-color};
+    --topbar-hover-text-color: #{$topbar-hover-text-color};
+    --topbar-active-bg-color: #{$topbar-active-bg-color};
+    --topbar-active-text-color: #{$topbar-active-text-color};
   }

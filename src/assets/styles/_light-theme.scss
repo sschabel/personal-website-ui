@@ -5,9 +5,11 @@ $darker-moonstone: darken($moonstone, 25%);
 
 /* Theme-specific component colors */
 $footer-bg-color: $alice-blue;
+$footer-text-color: $charcoal;
 $normal-button-bg-color: $moonstone;
 $outlined-button-text-color: $moonstone;
 $panel-header-color: $alice-blue;
+$panel-header-text-color: $charcoal;
 $topbar-bg-color: $paynes-gray;
 $topbar-text-color: $white;
 $topbar-hover-bg-color: $darker-moonstone;
@@ -40,12 +42,11 @@ $gradient-radial: radial-gradient($moonstone, $white, $paynes-gray, $antiflash-w
     --alice-blue: #{$alice-blue};
     --daveys-gray: #{$davys-gray};
     --raisin-black: #{$raisin-black};
-
-
-    --footer-background-color: #{$footer-bg-color};
   
     --darker-moonstone: #{$darker-moonstone};
 
+    --footer-background-color: #{$footer-bg-color};
+    --footer-text-color: #{$footer-text-color};
     --topbar-bg-color: #{$topbar-bg-color};
     --topbar-text-color: #{$topbar-text-color};
     --topbar-hover-bg-color: #{$topbar-hover-bg-color};
