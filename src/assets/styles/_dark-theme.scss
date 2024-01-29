@@ -1,0 +1,32 @@
+@import "./colors";
+
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, $rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
+$gradient-right: linear-gradient(90deg, $rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
+$gradient-bottom: linear-gradient(180deg, $rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
+$gradient-left: linear-gradient(270deg, $rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
+$gradient-top-right: linear-gradient(45deg, $rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
+$gradient-bottom-right: linear-gradient(135deg, $rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
+$gradient-top-left: linear-gradient(225deg, $rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
+$gradient-bottom-left: linear-gradient(315deg, $rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
+$gradient-radial: radial-gradient($rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
+
+@import "./primeng/buttons";
+@import "./primeng/panels";
+@import "./index";
+
+  /* Variables */
+  :root {
+    --moonstone: #{$moonstone};
+    --white: #{$white};
+    --paynes-gray: #{$paynes-gray};
+    --antiflash-white: #{$antiflash-white};
+    --atomic-tangerine: #{$atomic-tangerine};
+    --alice-blue: #{$alice-blue};
+    --daveys-gray: #{$davys-gray};
+    --raisin-black: #{$raisin-black};
+  
+    --darker-moonstone: #{$darker-moonstone};
+    --main-background-color: #{$paynes-gray};
+  }

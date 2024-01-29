@@ -1,10 +1,10 @@
 /* SCSS Overwrites for PrimeNg buttons and button-type components */
 .p-button {
     color: $white;
-    background-color: $moonstone;
+    background-color: $normal-button-bg-color;
 }
 
 .p-button.p-button-outlined {
-    color: $moonstone;
+    color: $outlined-button-text-color;
     background-color: transparent;
 }
