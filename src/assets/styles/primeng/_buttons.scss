@@ -2,6 +2,7 @@
 .p-button {
     color: $white;
     background-color: $normal-button-bg-color;
+    border: 1px solid $normal-button-bg-color;
 }
 
 .p-button.p-button-outlined {

@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SimpleMenuItem } from '@models/simple-menu-item';
+import { getState, patchState } from '@ngrx/signals';
 import { ArrayUtils } from '@utils/array-utils';
+import { GlobalStore } from 'app/ngrx/global.store';
 
 @Component({
   selector: 'app-topbar',
@@ -13,9 +15,15 @@ import { ArrayUtils } from '@utils/array-utils';
 })
 export class TopbarComponent implements OnInit {
   
+  readonly store = inject(GlobalStore);
   menuItems: SimpleMenuItem[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    effect(() => {
+      const state = getState(this.store);
+      console.log('Global state changed!', state);
+    });
+  }
 
   ngOnInit(): void {
     this.setupMenu();
@@ -31,6 +39,7 @@ export class TopbarComponent implements OnInit {
     this.menuItems.push(blog);
     this.menuItems.push(professionalDetails);
     this.menuItems.push(github);
+    this.store.updateCurrentMenuItemIndex(0);
   }
 
   triggerAction(menuItem: SimpleMenuItem): void {
