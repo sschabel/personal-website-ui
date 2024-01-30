@@ -1,5 +1,5 @@
 .topbar {
-    background-color: var(--topbar-bg-color);
+    background: var(--topbar-bg-color);
     overflow: hidden;
   }
   
@@ -13,11 +13,11 @@
   }
   
   .topbar a:hover {
-    background-color: var(--topbar-hover-bg-color);
+    background: var(--topbar-hover-bg-color);
     color: var(--topbar-hover-text-color);
   }
   
   .topbar a.active {
-    background-color: var(--topbar-active-bg-color);
+    background: var(--topbar-active-bg-color);
     color: var(--topbar-active-text-color);
   }

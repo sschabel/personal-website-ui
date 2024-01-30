@@ -6,8 +6,11 @@ $darker-paynes-gray: darken($paynes-gray, 25%);
 /* Theme-specific component colors */
 $footer-bg-color: $raisin-black;
 $footer-text-color: $white;
+$main-bg-color: $black;
 $normal-button-bg-color: $paynes-gray;
 $outlined-button-text-color: $paynes-gray;
+$panel-content-bg-color: $davys-gray;
+$panel-content-text-color: $white;
 $panel-header-color: $raisin-black;
 $panel-header-text-color: $white;
 $topbar-bg-color: $raisin-black;
@@ -36,6 +39,7 @@ $gradient-radial: radial-gradient($rose-quartz, $alice-blue, $davys-gray, $raisi
   :root {
     --moonstone: #{$moonstone};
     --white: #{$white};
+    --black: #{$black};
     --paynes-gray: #{$paynes-gray};
     --antiflash-white: #{$antiflash-white};
     --atomic-tangerine: #{$atomic-tangerine};
@@ -44,7 +48,6 @@ $gradient-radial: radial-gradient($rose-quartz, $alice-blue, $davys-gray, $raisi
     --raisin-black: #{$raisin-black};
   
     --darker-paynes-gray: #{$darker-paynes-gray};
-
     --footer-bg-color: #{$footer-bg-color};
     --footer-text-color: #{$footer-text-color};
     --topbar-bg-color: #{$topbar-bg-color};

@@ -6,4 +6,6 @@
 
 .p-panel .p-panel-content {
     border: none;
+    background-color: $panel-content-bg-color;
+    color: $panel-content-text-color;
 }
