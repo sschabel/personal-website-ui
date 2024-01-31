@@ -1,13 +1,13 @@
 export class SimpleMenuItem {
 
-    active: boolean;
+    id: number;
     label: string;
     icon: string | undefined;
     routerLink: string | undefined;
     url: string | undefined;
 
-    public constructor(active: boolean, label: string, icon?: string, routerLink?: string, url?: string) {
-        this.active = active;
+    public constructor(id: number, label: string, icon?: string, routerLink?: string, url?: string) {
+        this.id = id;
         this.label = label;
         this.icon = icon;
         this.routerLink = routerLink;

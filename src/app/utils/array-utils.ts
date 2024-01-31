@@ -4,4 +4,5 @@ export class ArrayUtils {
     public static getItemByProperty(array: any[], property: string, value: any): any | undefined {
         return array.find((item: any) => item[property] === value);
     }
+
 }
