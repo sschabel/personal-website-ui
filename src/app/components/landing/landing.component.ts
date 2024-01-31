@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [ButtonModule],
+  imports: [AnimateOnScrollModule, ButtonModule],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'
 })

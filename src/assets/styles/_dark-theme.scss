@@ -4,21 +4,23 @@
 $darker-paynes-gray: darken($paynes-gray, 25%);
 
 /* Theme-specific component colors */
-$footer-bg-color: $raisin-black;
-$footer-text-color: $white;
+$primary-text-color: $white;
+
+$footer-bg-color: $darker-paynes-gray;
+$footer-text-color: $primary-text-color;
 $main-bg-color: $black;
 $normal-button-bg-color: $paynes-gray;
-$outlined-button-text-color: $white;
+$outlined-button-text-color: $primary-text-color;
 $panel-content-bg-color: $davys-gray;
-$panel-content-text-color: $white;
+$panel-content-text-color: $primary-text-color;
 $panel-header-color: $raisin-black;
-$panel-header-text-color: $white;
+$panel-header-text-color: $primary-text-color;
 $topbar-bg-color: $raisin-black;
-$topbar-text-color: $white;
+$topbar-text-color: $primary-text-color;
 $topbar-hover-bg-color: $darker-paynes-gray;
-$topbar-hover-text-color: $white;
+$topbar-hover-text-color: $primary-text-color;
 $topbar-active-bg-color: $paynes-gray;
-$topbar-active-text-color: $white;
+$topbar-active-text-color: $primary-text-color;
 $welcome-message-text-color: $moonstone;
 
 /* SCSS Gradient */
@@ -48,6 +50,7 @@ $gradient-radial: radial-gradient($rose-quartz, $alice-blue, $davys-gray, $raisi
     --daveys-gray: #{$davys-gray};
     --raisin-black: #{$raisin-black};
   
+    --primary-text-color: #{$primary-text-color};
     --darker-paynes-gray: #{$darker-paynes-gray};
     --footer-bg-color: #{$footer-bg-color};
     --footer-text-color: #{$footer-text-color};

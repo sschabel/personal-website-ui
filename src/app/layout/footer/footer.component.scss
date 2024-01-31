@@ -2,4 +2,8 @@
     min-height: 10rem;
     background: var(--footer-bg-color);
     color: var(--footer-text-color);
+
+    div {
+        background: var(--footer-bg-color);
+    }
 }

@@ -1,11 +1,11 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 
 type GlobalState = {
-  currentMenuItemIndex: number;
+  lastError: Error | null;
 };
 
 const initialState: GlobalState = {
-  currentMenuItemIndex: -1
+  lastError: null
 };
 
 export const GlobalStore = signalStore(
@@ -13,9 +13,9 @@ export const GlobalStore = signalStore(
   withState(initialState),
   withMethods((store) => ({
 
-    updateCurrentMenuItemIndex(newMenuItemIndex: number) {
+    updateLastError(error: Error | null) {
 
-    patchState(store, { currentMenuItemIndex: newMenuItemIndex});
+    patchState(store, { lastError: error});
     
     }
     
