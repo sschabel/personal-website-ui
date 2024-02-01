@@ -5,11 +5,17 @@
     <div class="flex">
         <i class="fas fa-dumpster-fire fa-10x"></i>
     </div>
-    <div class="flex">
-        <h3>Please contact the administrator.</h3>
+    <div *ngIf="error && error.name" class="flex">
+        <h3>{{error.name}}</h3>
     </div>
-    <div class="flex">
-        <h3>{{error?.message}}</h3>
+    <div *ngIf="error && error.cause" class="flex">
+        <h3>{{error.cause}}</h3>
+    </div>
+    <div *ngIf="error && error.message" class="flex">
+        <h3>{{error.message}}</h3>
+    </div>
+    <div *ngIf="error && error.stack" class="flex">
+        <pre>{{error.stack}}</pre>
     </div>
 </div>
 

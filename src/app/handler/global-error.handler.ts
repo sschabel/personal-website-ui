@@ -1,7 +1,8 @@
-import { ErrorHandler, inject } from "@angular/core";
+import { ErrorHandler, Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { GlobalStore } from "app/ngrx/global.store";
 
+@Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
 
     readonly store = inject(GlobalStore);

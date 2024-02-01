@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { GlobalStore } from 'app/ngrx/global.store';
 
 @Component({
   selector: 'app-error',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './error.component.html',
   styleUrl: './error.component.scss'
 })
