@@ -1,9 +1,32 @@
 .footer {
-    min-height: 10rem;
+    min-height: 8rem;
     background: var(--footer-bg-color);
     color: var(--footer-text-color);
 
     div {
         background: var(--footer-bg-color);
     }
+
+}
+
+.site-map {
+
+    li {
+        margin-bottom: 0.5rem;
+        list-style-type: none;
+
+        a:hover {
+            cursor: pointer;
+            color: var(--footer-hover-text-color);
+          }
+    }
+}
+
+.footer-header {
+    font-size: large;
+}
+
+a:hover.social-media {
+    cursor: pointer;
+    color: var(--footer-hover-text-color);
 }

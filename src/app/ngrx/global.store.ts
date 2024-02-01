@@ -1,11 +1,14 @@
+import { SimpleMenuItem } from '@models/simple-menu-item';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 
 type GlobalState = {
   lastError: Error | null;
+  menuItems: SimpleMenuItem[];
 };
 
 const initialState: GlobalState = {
-  lastError: null
+  lastError: null,
+  menuItems: []
 };
 
 export const GlobalStore = signalStore(
@@ -17,6 +20,10 @@ export const GlobalStore = signalStore(
 
     patchState(store, { lastError: error});
     
+    },
+
+    updateMenuItems(menuItems: SimpleMenuItem[]) {
+      patchState(store, {menuItems: menuItems})
     }
     
   }))

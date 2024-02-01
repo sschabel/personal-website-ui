@@ -26,8 +26,10 @@
     "baseUrl": "src",
     "paths": {
       "@components/*": ["app/components/*"],
+      "@handler/*": ["app/handler/*"],
       "@layout/*": ["app/layout/*"],
       "@models/*": ["app/models/*"],
+      "@ngrx/*": ["app/ngrx/*"],
       "@services/*": ["app/services/*"],
       "@utils/*": ["app/utils/*"]
   }

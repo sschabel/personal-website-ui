@@ -1,8 +1,31 @@
-<div class="footer flex flex-column align-items-center justify-content-center">
-    <div class="flex mb-0 pb-0">
-        samschabel.com
+<div class="footer grid">
+    <div class="col-6 mt-5">
+        <div class="flex justify-content-end align-items-center">
+            <div class="flex flex-column align-items-center">
+            <div class="footer-header flex mr-2">
+                samschabel.com
+            </div>
+            <div class="flex">
+                <a class="social-media m-2" (click)="goToGithub()"><i class="fa-brands fa-github"></i></a>
+                <a class="social-media m-2" (click)="goToX()"><i class="fa-brands fa-x-twitter"></i></a>
+                <a class="social-media m-2" (click)="goToLinkedIn()"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        </div>
     </div>
-    <div class="flex mt-0 pt-0">
-        Created by myself!
+    <div class="col-6">
+        <div class="flex justify-content-start">
+            <ul class="site-map mt-1">
+                <li class="footer-header">Site Map</li>
+                <ng-container *ngFor="let menuItem of menuItems">
+                    <li class="site-map-link">
+                        <a *ngIf="!menuItem.isExternal" (click)="triggerAction(menuItem)">
+                            <i [class]="menuItem.icon"></i>
+                            {{menuItem.label}}
+                        </a>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
     </div>
 </div>

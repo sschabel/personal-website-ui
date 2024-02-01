@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit, effect, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { SimpleMenuItem } from '@models/simple-menu-item';
 import { GlobalStore } from 'app/ngrx/global.store';
@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class TopbarComponent implements OnInit, OnDestroy {
   
+  readonly store = inject(GlobalStore);
   menuItems: SimpleMenuItem[] = [];
   currentMenuItemIndex: number = -1;
   navEndSub: Subscription | null = null;
@@ -22,31 +23,18 @@ export class TopbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.navEndSub = this.router.events.subscribe((event) => {
-      console.log(event instanceof NavigationEnd);
       if(event instanceof NavigationEnd) {
         let menuItemIndex: number = this.menuItems.findIndex((item: SimpleMenuItem) => item.routerLink === event.url);
         this.currentMenuItemIndex = menuItemIndex;
       }
   });
-    this.setupMenu();
+    this.menuItems = this.store.menuItems();
   }
 
   ngOnDestroy(): void {
     if(this.navEndSub) {
       this.navEndSub.unsubscribe();
     }
-  }
-
-  private setupMenu(): void {
-    let landing: SimpleMenuItem = new SimpleMenuItem(1, 'Home', 'fas fa-house-chimney', '/');
-    let blog: SimpleMenuItem = new SimpleMenuItem(2, 'Blog', 'fas fa-blog', '/blog');
-    let professionalDetails: SimpleMenuItem = new SimpleMenuItem(3, 'Professional Details', 'fas fa-user-tie', '/professional-details');
-    let github: SimpleMenuItem = new SimpleMenuItem(4, 'GitHub', 'fa-brands fa-github', undefined, 'https://github.com/sschabel');
-
-    this.menuItems.push(landing);
-    this.menuItems.push(blog);
-    this.menuItems.push(professionalDetails);
-    this.menuItems.push(github);
   }
 
   triggerAction(menuItem: SimpleMenuItem): void {
