@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalStore } from 'app/ngrx/global.store';
 
 @Component({
@@ -11,8 +11,9 @@ import { GlobalStore } from 'app/ngrx/global.store';
 })
 export class ErrorComponent implements OnInit {
 
-  readonly store = inject(GlobalStore);
   error: Error | null = null;
+
+  constructor(private store: GlobalStore) {}
 
   ngOnInit(): void {
     this.error = this.store.lastError();

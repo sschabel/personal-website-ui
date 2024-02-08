@@ -3,6 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SimpleMenuItem } from '@models/simple-menu-item';
 import { GlobalStore } from '@ngrx/global.store';
+import { WindowService } from '@services/window.service';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 
@@ -21,7 +22,7 @@ export class FooterComponent implements OnInit {
   readonly store = inject(GlobalStore);
   menuItems: SimpleMenuItem[] = [];
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private windowService: WindowService){}
 
   ngOnInit(): void {
     this.menuItems = this.store.menuItems().filter(item => !item.isExternal);
@@ -34,15 +35,15 @@ export class FooterComponent implements OnInit {
   }
 
   public goToGithub(): void {
-    window.location.href = this.gitHubUrl;
+    this.windowService.setHref(this.gitHubUrl);
   }
 
   public goToX(): void {
-    window.location.href = this.xUrl;
+    this.windowService.setHref(this.xUrl);
   }
 
   public goToLinkedIn(): void {
-    window.location.href = this.linkedInUrl;
+    this.windowService.setHref(this.linkedInUrl);
   }
 
 }
