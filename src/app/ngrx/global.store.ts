@@ -28,3 +28,5 @@ export const GlobalStore = signalStore(
     
   }))
 );
+
+export type GlobalStore = InstanceType<typeof GlobalStore>;

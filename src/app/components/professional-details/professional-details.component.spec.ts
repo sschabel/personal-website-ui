@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfessionalDetailsComponent } from './professional-details.component';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ProfessionalDetailsComponent', () => {
   let component: ProfessionalDetailsComponent;
@@ -8,7 +9,7 @@ describe('ProfessionalDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProfessionalDetailsComponent]
+      imports: [ProfessionalDetailsComponent, NoopAnimationsModule]
     })
     .compileComponents();
     
