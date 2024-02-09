@@ -37,7 +37,9 @@ $gradient-radial: radial-gradient($rose-quartz, $alice-blue, $davys-gray, $raisi
 
 @import "./primeng/buttons";
 @import "./primeng/panels";
+@import "./primeng/passwords";
 @import "./index";
+@import "./buttons";
 
   /* Variables */
   :root {

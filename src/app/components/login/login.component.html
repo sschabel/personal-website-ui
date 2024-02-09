@@ -1,0 +1,21 @@
+<div class="flex justify-content-center">
+    <div class="login-card mt-5">
+        <div class="login-header flex justify-content-center">
+            <h1>Welcome!</h1>
+        </div>
+        <div class="login-body flex justify-content-center">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <span class="p-float-label">
+                    <input id="username" type="text" pInputText formControlName="username" />
+                    <label for="username">Username</label>
+                </span>
+                <span class="p-float-label mt-5">
+                    <p-password id="password" formControlName="password" [feedback]="false"></p-password>
+                    <label for="password">Password</label>
+                </span>
+                <p-button [styleClass]="'login-button mt-5 mb-5'" label="Login" icon="fas fa-right-to-bracket" type="submit" 
+                    [disabled]="!loginForm.valid"></p-button>
+            </form>
+        </div>
+    </div>
+</div>

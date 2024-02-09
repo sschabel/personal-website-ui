@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { GlobalStore } from 'app/ngrx/global.store';
+import { GlobalStore } from '@ngrx/global.store';
 
 @Component({
   selector: 'app-error',

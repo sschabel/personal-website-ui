@@ -1,4 +1,4 @@
-import { Component, ErrorHandler, OnInit, inject } from '@angular/core';
+import { Component, ErrorHandler, OnInit } from '@angular/core';
 import { FooterComponent } from '@layout/footer/footer.component';
 import { TopbarComponent } from '@layout/topbar/topbar.component';
 import { RouterOutlet } from '@angular/router';
@@ -16,7 +16,7 @@ import { GlobalStore } from '@ngrx/global.store';
 })
 export class AppComponent implements OnInit {
 
-  readonly store = inject(GlobalStore);
+  constructor(readonly store: GlobalStore){}
   
   ngOnInit(): void {
     this.store.updateMenuItems(this.setupMenu());
@@ -27,12 +27,14 @@ export class AppComponent implements OnInit {
     let blog: SimpleMenuItem = new SimpleMenuItem(2, 'Blog', false, 'fas fa-blog', '/blog');
     let professionalDetails: SimpleMenuItem = new SimpleMenuItem(3, 'Professional Details', false, 'fas fa-user-tie', '/professional-details');
     let github: SimpleMenuItem = new SimpleMenuItem(4, 'GitHub', true, 'fa-brands fa-github', undefined, 'https://github.com/sschabel');
+    let login: SimpleMenuItem = new SimpleMenuItem(5, 'Login', false, 'fas fa-right-to-bracket', '/login');
 
     let menuItems: SimpleMenuItem[] = [];
     menuItems.push(landing);
     menuItems.push(blog);
     menuItems.push(professionalDetails);
     menuItems.push(github);
+    menuItems.push(login);
     return menuItems;
   }
 
