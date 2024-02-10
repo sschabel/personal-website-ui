@@ -9,13 +9,12 @@ import { Observable } from "rxjs";
   })
 export class AuthService {
 
-    apiBaseUrl: string = '/put-api-base-url-here';
-    loginUrl: string = '/put-login-url-here';
+    loginUrl: string = '/login';
 
     constructor(private http: HttpClient){}
 
     public loginRequest(username: string, password: string): Observable<LoginResponse> {
-        return this.http.post<LoginResponse>(`${this.apiBaseUrl}${this.loginUrl}`, new LoginRequest(username, password));
+        return this.http.post<LoginResponse>(this.loginUrl, new LoginRequest(username, password));
     }
 
 }
