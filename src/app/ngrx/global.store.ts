@@ -1,18 +1,19 @@
-import { inject } from '@angular/core';
-import { Router } from '@angular/router';
 import { SimpleMenuItem } from '@models/simple-menu-item';
+import { User } from '@models/user';
 import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
 
 type GlobalState = {
   bearerToken: string | null;
   lastError: Error | null;
   menuItems: SimpleMenuItem[];
+  user: User | null;
 };
 
 const initialState: GlobalState = {
   bearerToken: null,
   lastError: null,
-  menuItems: []
+  menuItems: [],
+  user: null
 };
 
 export const GlobalStore = signalStore(
@@ -30,6 +31,10 @@ export const GlobalStore = signalStore(
 
     updateMenuItems(menuItems: SimpleMenuItem[]) {
       patchState(store, { menuItems: menuItems })
+    },
+
+    updateUser(user: User) {
+      patchState(store, {user: user})
     }
 
   })),

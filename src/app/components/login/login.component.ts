@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginResponse } from '@models/login-response';
 import { GlobalStore } from '@ngrx/global.store';
 import { AuthService } from '@services/auth.service';
 import { ButtonModule } from 'primeng/button';
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor(private authService: AuthService, readonly store: GlobalStore) { }
+  constructor(private authService: AuthService, readonly store: GlobalStore, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -33,8 +35,10 @@ export class LoginComponent implements OnInit {
   login(): void {
     if (this.loginForm.valid) {
       this.authService.loginRequest(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value)
-        .subscribe((bearerToken: string) => {
-          this.store.updateBearerToken(bearerToken);
+        .subscribe((response: LoginResponse) => {
+          this.store.updateBearerToken(response.bearerToken);
+          this.store.updateUser(response.user);
+          this.router.navigateByUrl('/user/dashboard');
         });
     }
   }

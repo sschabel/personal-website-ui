@@ -6,6 +6,7 @@ import { ErrorComponent } from '@components/error/error.component';
 import { NotFoundComponent } from '@components/not-found/not-found.component';
 import { NotAuthorizedComponent } from '@components/not-authorized/not-authorized.component';
 import { LoginComponent } from '@components/login/login.component';
+import { DashboardComponent } from '@components/user/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -13,6 +14,9 @@ export const routes: Routes = [
     },
     {
         path: 'blog', component: BlogComponent
+    },
+    {
+        path: 'user/dashboard', component: DashboardComponent
     },
     {
         path: 'login', component: LoginComponent
