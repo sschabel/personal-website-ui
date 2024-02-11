@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { GlobalErrorHandler } from '@handler/global-error.handler';
 import { BearerTokenInterceptor } from './interceptors/bearer-token.interceptor';
 import { ApiPrependerInterceptor } from './interceptors/api-prepender.interceptor';
@@ -11,6 +11,7 @@ import { ApiPrependerInterceptor } from './interceptors/api-prepender.intercepto
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    importProvidersFrom(HttpClientModule),
     importProvidersFrom([BrowserAnimationsModule]),
     provideHttpClient(
       withInterceptorsFromDi()

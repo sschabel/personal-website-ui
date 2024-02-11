@@ -11,7 +11,7 @@ export class ApiPrependerInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone(
       {
-        url: this.prependApiBaseUrl(req.url),
+        url: this.prependApiBaseUrl(req.url)
       });
     return next.handle(req);
   }
@@ -19,5 +19,5 @@ export class ApiPrependerInterceptor implements HttpInterceptor {
   private prependApiBaseUrl(url: string): string {
     return `${environment.apiUrl}${url}`;
   }
-  
+
 }

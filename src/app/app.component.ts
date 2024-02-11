@@ -5,21 +5,23 @@ import { RouterOutlet } from '@angular/router';
 import { GlobalErrorHandler } from '@handler/global-error.handler';
 import { SimpleMenuItem } from '@models/simple-menu-item';
 import { GlobalStore } from '@ngrx/global.store';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [TopbarComponent, FooterComponent, RouterOutlet],
-  providers: [{provide: ErrorHandler, useClass: GlobalErrorHandler}],
+  providers: [AuthService, {provide: ErrorHandler, useClass: GlobalErrorHandler}],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
 
-  constructor(readonly store: GlobalStore){}
+  constructor(private authService: AuthService, readonly store: GlobalStore){}
   
   ngOnInit(): void {
     this.store.updateMenuItems(this.setupMenu());
+    this.authService.populateCsrfToken();
   }
 
   private setupMenu(): SimpleMenuItem[] {
