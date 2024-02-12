@@ -23,7 +23,7 @@ export const routes: Routes = [
         path: 'user/dashboard',
         component: DashboardComponent,
         data: { authority: AuthorityEnum.ADMIN },
-        canActivate: [authorizationGuard]
+        canMatch: [authorizationGuard]
     },
     {
         path: 'login',
