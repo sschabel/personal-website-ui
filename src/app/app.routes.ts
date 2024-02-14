@@ -11,6 +11,8 @@ import { authorizationGuard } from './guards/authorization.guard';
 import { AuthorityEnum } from '@models/authority.enum';
 import { BlogEditorComponent } from '@components/user/blog-editor/blog-editor.component';
 import { UserComponent } from '@components/user/user.component';
+import { ArticlesListComponent } from '@components/user/blog-editor/articles-list/articles-list.component';
+import { ArticleEditorComponent } from '@components/user/blog-editor/article-editor/article-editor.component';
 
 export const routes: Routes = [
     {
@@ -31,7 +33,15 @@ export const routes: Routes = [
               path: '', component: DashboardComponent
             },
             {
-              path:'blog-editor', component: BlogEditorComponent
+              path:'blog-editor', component: BlogEditorComponent,
+              children: [
+                {
+                  path: '', component: ArticlesListComponent
+                },
+                {
+                  path:'article', component: ArticleEditorComponent
+                }
+              ]
             }
           ]
     },

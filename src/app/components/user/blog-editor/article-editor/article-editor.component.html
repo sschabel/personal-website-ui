@@ -1,0 +1,9 @@
+<p>article-editor works!</p>
+<form [formGroup]="articleForm">
+    <span class="p-float-label">
+        <input id="title" type="text" pInputText formControlName="title" />
+        <label for="title">Title</label>
+    </span>
+    <p-chips formControlName="tags" [max]="maxTagsAllowed"></p-chips>
+    <p-editor formControlName="content" [style]="{ height: '320px' }"></p-editor>
+</form>
