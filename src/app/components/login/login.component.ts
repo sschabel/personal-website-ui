@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         .subscribe((response: LoginResponse) => {
           this.store.updateBearerToken(response.bearerToken);
           this.store.updateUser(response.user);
-          this.router.navigateByUrl('/user/dashboard');
+          this.router.navigateByUrl('/user');
         });
     }
   }

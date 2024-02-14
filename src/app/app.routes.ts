@@ -9,6 +9,8 @@ import { LoginComponent } from '@components/login/login.component';
 import { DashboardComponent } from '@components/user/dashboard/dashboard.component';
 import { authorizationGuard } from './guards/authorization.guard';
 import { AuthorityEnum } from '@models/authority.enum';
+import { BlogEditorComponent } from '@components/user/blog-editor/blog-editor.component';
+import { UserComponent } from '@components/user/user.component';
 
 export const routes: Routes = [
     {
@@ -20,10 +22,18 @@ export const routes: Routes = [
         component: BlogComponent
     },
     {
-        path: 'user/dashboard',
-        component: DashboardComponent,
+        path: 'user',
+        component: UserComponent,
         data: { authority: AuthorityEnum.ADMIN },
-        canMatch: [authorizationGuard]
+        canMatch: [authorizationGuard],
+        children: [
+            {
+              path: '', component: DashboardComponent
+            },
+            {
+              path:'blog-editor', component: BlogEditorComponent
+            }
+          ]
     },
     {
         path: 'login',

@@ -1,1 +1,3 @@
-<p style="color: white;">dashboard works!</p>
+@if(user && user.username) {
+<p style="color: white;">Welcome, {{user.username}}!</p>
+}
