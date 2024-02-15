@@ -17,10 +17,13 @@ import { AuthService } from '@services/auth.service';
 })
 export class AppComponent implements OnInit {
 
+  topMenuItems: SimpleMenuItem[] = [];
+
   constructor(private authService: AuthService, readonly store: GlobalStore){}
   
   ngOnInit(): void {
     this.store.updateMenuItems(this.setupMenu());
+    this.topMenuItems = this.store.menuItems();
     this.authService.populateCsrfToken();
   }
 

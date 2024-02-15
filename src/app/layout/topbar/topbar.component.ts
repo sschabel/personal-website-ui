@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
 import { SimpleMenuItem } from '@models/simple-menu-item';
 import { WindowService } from '@services/window.service';
@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 })
 export class TopbarComponent implements OnInit, OnDestroy {
 
+  @Input()
   menuItems: SimpleMenuItem[] = [];
   currentMenuItemIndex: number = -1;
   navEndSub: Subscription | null = null;
@@ -24,7 +25,6 @@ export class TopbarComponent implements OnInit, OnDestroy {
     private windowService: WindowService) { }
 
   ngOnInit(): void {
-    this.menuItems = this.store.menuItems();
     this.navEndSub = this.router.events.subscribe((event) => {
       this.setupCurrentMenuIndex(event);
     });

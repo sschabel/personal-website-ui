@@ -1,1 +1,5 @@
-<router-outlet></router-outlet>
+@if(onListView){
+    <app-articles-list [editMode]="true" (editArticleEvent)="openArticleEditor($event)"></app-articles-list>
+} @else {
+    <app-article-editor (exitArticleEditor)="closeArticleEditor($event)"></app-article-editor>
+}

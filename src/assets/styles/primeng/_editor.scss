@@ -1,14 +1,17 @@
 .articles-list .p-editor-container .p-editor-content {
-    border: none;
+    border-radius: 6px;
+    border-color: $panel-content-bg-color;
 }
 
 .articles-list .p-editor-container .p-editor-content .ql-editor {
-    background-color: $main-bg-color;
+    background-color: $panel-content-bg-color;
     color: $primary-text-color;
-    border: none;
     scrollbar-width: thin;
+    max-height: 367px;
+    border-radius: 6px;
+    border-color: $panel-content-bg-color;
 }
 
 .articles-list .p-editor-container .p-editor-content.ql-snow {
-    border: none;
+    border-color: $panel-content-bg-color;
 }

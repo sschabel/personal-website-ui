@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from '@models/article';
@@ -17,6 +17,10 @@ import { EditorModule } from 'primeng/editor';
 })
 export class ArticlesListComponent implements OnInit {
 
+  @Input()
+  editMode: boolean = false;
+  @Output()
+  editArticleEvent: EventEmitter<Article | null> = new EventEmitter<Article | null>();
   articles: Article[] = [];
   quillModules: any = {
     toolbar: false
@@ -31,11 +35,11 @@ export class ArticlesListComponent implements OnInit {
   }
 
   editArticle(article: Article): void {
-    this.router.navigateByUrl('/user/blog-editor/article');
+    this.editArticleEvent.emit(article);
   }
 
   newArticle(): void {
-    this.router.navigateByUrl('/user/blog-editor/article');
+    this.editArticleEvent.emit(null);
   }
 
 }

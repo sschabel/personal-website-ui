@@ -1,0 +1,43 @@
+<div class="grid mt-0">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="flex align-items-center">
+            <h1 class="mr-1">Articles</h1>
+            @if(editMode) {
+            <p-button [styleClass]="'mt-5 mb-5'" label="New" icon="fas fa-plus" (onClick)="newArticle()"></p-button>
+            }
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+@for (article of articles; track $index) {
+<div class="grid animation-duration-1000" pAnimateOnScroll enterClass="fadein" leaveClass="fadeout">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="flex align-items-center mb-1">
+            @if (editMode) {
+            <p-button [styleClass]="'mr-2'" icon="fas fa-edit" (onClick)="editArticle(article)"></p-button>
+            }
+            <h2>
+                {{article.title}}
+            </h2>
+        </div>
+        <p-editor [class]="'articles-list'" [modules]="quillModules" [readonly]="true" [(ngModel)]="article.content">
+            <ng-template pTemplate="header">
+                <span class="ql-formats"></span>
+            </ng-template>
+        </p-editor>
+        <div class="mt-1">
+            <div class="flex align-items-center">
+                <p class="tag-label mr-1">Tags:</p>
+                @for (tag of article.tags; track $index) {
+                <p-chip [class]="'articles-list mr-1'" [label]="tag"></p-chip>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+} @empty {
+No articles found.
+}

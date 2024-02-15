@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { GlobalComponentStore } from '@components/store/global-component.store';
 import { Article } from '@models/article';
 import { BlogService } from '@services/blog.service';
 import { ButtonModule } from 'primeng/button';
@@ -17,31 +17,56 @@ import { InputTextModule } from 'primeng/inputtext';
 })
 export class ArticleEditorComponent implements OnInit {
 
+  @Output()
+  exitArticleEditor: EventEmitter<any> = new EventEmitter();
   articleForm!: FormGroup;
+  article: Article | null = null;
   maxTagsAllowed: number = 5;
+  digitsOnly: RegExp = /^[0-9]\d*$/
 
-  constructor(private blogService: BlogService, private router: Router){}
+  constructor(private blogService: BlogService, private componentStore: GlobalComponentStore) { }
 
   ngOnInit(): void {
-      this.articleForm = new FormGroup({
-        title: new FormControl('', [Validators.required]),
-        content: new FormControl('', [Validators.required]),
-        tags: new FormControl('', [Validators.required])
-      });
+    this.articleForm = new FormGroup({
+      title: new FormControl<string>('', [Validators.required]),
+      content: new FormControl<string>('', [Validators.required]),
+      tags: new FormControl<string[]>([], [Validators.required]),
+      id: new FormControl<number | null>(null, [Validators.min(1), Validators.pattern(this.digitsOnly)])
+    });
+
+    this.article = this.componentStore.currentArticle();
+    if (this.article) {
+      this.title?.setValue(this.article.title);
+      this.tags?.setValue(this.article.tags);
+      this.content?.setValue(this.article.content);
+      this.articleForm.get('id')?.setValue(this.article.id);
+    }
   }
 
   cancel(): void {
-    this.articleForm.reset();
-    this.router.navigateByUrl('/user/blog-editor');
+    this.cleanupAndCloseOutOfArticleEditor();
   }
 
   submitArticle(): void {
-    if(this.articleForm.valid) {
-      this.blogService.createArticle(new Article(this.title?.value, this.content?.value, this.tags?.value))
-      .subscribe((response: Article) => {
-        this.router.navigateByUrl('/user/blog-editor');
-      });
+    if (this.articleForm.valid) {
+      if (this.article) {
+        this.blogService.updateArticle(new Article(this.title?.value, this.content?.value, this.tags?.value, this.articleForm.get('id')?.value))
+        .subscribe((response: Article) => {
+          this.cleanupAndCloseOutOfArticleEditor();
+        });
+      } else {
+        this.blogService.createArticle(new Article(this.title?.value, this.content?.value, this.tags?.value))
+          .subscribe((response: Article) => {
+            this.cleanupAndCloseOutOfArticleEditor();
+          });
+      }
     }
+  }
+
+  cleanupAndCloseOutOfArticleEditor(): void {
+    this.articleForm.reset();
+    this.componentStore.updateCurrentArticle(null);
+    this.exitArticleEditor.emit();
   }
 
   public get title(): AbstractControl<any> | null {
