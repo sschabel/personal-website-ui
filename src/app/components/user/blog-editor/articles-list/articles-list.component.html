@@ -1,2 +1,14 @@
 <p style="color: white;">articles-list works!</p>
-<a style="color: white;" (click)="editArticle()">Edit Article</a>
+<p-button [styleClass]="'mt-5 mb-5'" label="New" icon="fas fa-plus" (onClick)="newArticle()"></p-button>
+@for (article of articles; track $index) {
+    <p-button [styleClass]="'mt-5 mb-5'" label="Edit" icon="fas fa-edit" (onClick)="editArticle(article)"></p-button>
+    <h2>
+        {{article.title}}
+    </h2>
+    @for (tag of article.tags; track $index) {
+        <p-chip [label]="tag"></p-chip>
+    }
+    <p-editor [(ngModel)]="article.content" [style]="{ height: '320px' }"></p-editor>
+} @empty {
+    No articles found.
+}

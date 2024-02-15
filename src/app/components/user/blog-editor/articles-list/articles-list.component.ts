@@ -1,18 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Article } from '@models/article';
+import { BlogService } from '@services/blog.service';
+import { ButtonModule } from 'primeng/button';
+import { ChipModule } from 'primeng/chip';
+import { EditorModule } from 'primeng/editor';
 
 @Component({
   selector: 'app-articles-list',
   standalone: true,
-  imports: [],
+  imports: [ButtonModule, ChipModule, EditorModule, FormsModule],
   templateUrl: './articles-list.component.html',
   styleUrl: './articles-list.component.scss'
 })
-export class ArticlesListComponent {
+export class ArticlesListComponent implements OnInit {
 
-  constructor(private router: Router){}
+  articles: Article[] = [];
 
-  editArticle(): void {
+  constructor(private blogService: BlogService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.blogService.getAllArticles().subscribe((articles: Article[]) => {
+      this.articles = articles;
+    });
+  }
+
+  editArticle(article: Article): void {
+    this.router.navigateByUrl('/user/blog-editor/article');
+  }
+
+  newArticle(): void {
     this.router.navigateByUrl('/user/blog-editor/article');
   }
 

@@ -1,9 +1,23 @@
 <p>article-editor works!</p>
-<form [formGroup]="articleForm">
-    <span class="p-float-label">
-        <input id="title" type="text" pInputText formControlName="title" />
-        <label for="title">Title</label>
-    </span>
-    <p-chips formControlName="tags" [max]="maxTagsAllowed"></p-chips>
-    <p-editor formControlName="content" [style]="{ height: '320px' }"></p-editor>
+<form [formGroup]="articleForm" (ngSubmit)="submitArticle()">
+    <div class="flex flex-column">
+        <div class="flex">
+            <span class="p-float-label">
+                <input id="title" type="text" pInputText formControlName="title" />
+                <label for="title">Title</label>
+            </span>
+        </div>
+        <div class="flex">
+            <p-chips formControlName="tags" [max]="maxTagsAllowed"></p-chips>
+        </div>
+        <div class="flex">
+            <p-editor formControlName="content" [style]="{ height: '320px' }"></p-editor>
+        </div>
+        <div class="flex">
+            <p-button [styleClass]="'mt-5 mb-5'" label="Cancel" icon="fas fa-xmark"
+            (onClick)="cancel()"></p-button>
+            <p-button [styleClass]="'mt-5 mb-5'" label="Save" icon="fas fa-floppy-disk" type="submit"
+                [disabled]="!articleForm.valid"></p-button>
+        </div>
+    </div>
 </form>
