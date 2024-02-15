@@ -6,6 +6,7 @@ import { GlobalErrorHandler } from '@handler/global-error.handler';
 import { SimpleMenuItem } from '@models/simple-menu-item';
 import { GlobalStore } from '@ngrx/global.store';
 import { AuthService } from '@services/auth.service';
+import { User } from '@models/user';
 
 @Component({
   selector: 'app-root',

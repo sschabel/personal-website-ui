@@ -1,0 +1,14 @@
+.articles-list .p-editor-container .p-editor-content {
+    border: none;
+}
+
+.articles-list .p-editor-container .p-editor-content .ql-editor {
+    background-color: $main-bg-color;
+    color: $primary-text-color;
+    border: none;
+    scrollbar-width: thin;
+}
+
+.articles-list .p-editor-container .p-editor-content.ql-snow {
+    border: none;
+}

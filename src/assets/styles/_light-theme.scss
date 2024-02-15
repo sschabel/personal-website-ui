@@ -33,6 +33,8 @@ $gradient-bottom-left: linear-gradient(315deg, $moonstone, $white, $paynes-gray,
 $gradient-radial: radial-gradient($moonstone, $white, $paynes-gray, $antiflash-white, $atomic-tangerine);
 
 @import "./primeng/buttons";
+@import "./primeng/chips";
+@import "./primeng/editor";
 @import "./primeng/panels";
 @import "./primeng/passwords";
 @import "./index";

@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.loginRequest(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value)
         .subscribe((response: LoginResponse) => {
-          this.store.updateBearerToken(response.bearerToken);
+          this.authService.setBearerTokenCookie(response.bearerToken);
           this.store.updateUser(response.user);
           this.router.navigateByUrl('/user');
         });

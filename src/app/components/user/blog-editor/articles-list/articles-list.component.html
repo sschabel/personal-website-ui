@@ -1,14 +1,27 @@
-<p style="color: white;">articles-list works!</p>
 <p-button [styleClass]="'mt-5 mb-5'" label="New" icon="fas fa-plus" (onClick)="newArticle()"></p-button>
 @for (article of articles; track $index) {
-    <p-button [styleClass]="'mt-5 mb-5'" label="Edit" icon="fas fa-edit" (onClick)="editArticle(article)"></p-button>
-    <h2>
-        {{article.title}}
-    </h2>
-    @for (tag of article.tags; track $index) {
-        <p-chip [label]="tag"></p-chip>
-    }
-    <p-editor [(ngModel)]="article.content" [style]="{ height: '320px' }"></p-editor>
+<div class="grid">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="flex align-items-center">
+            <p-button [styleClass]="'mt-5 mb-5 mr-2'" icon="fas fa-edit"
+                (onClick)="editArticle(article)"></p-button>
+            <h2>
+                {{article.title}}
+            </h2>
+        </div>
+        <p-divider></p-divider>
+        @for (tag of article.tags; track $index) {
+            <p-chip [class]="'articles-list mr-1 mb-3'" [label]="tag"></p-chip>
+        }
+        <p-editor [class]="'articles-list'" [modules]="quillModules" [readonly]="true" [(ngModel)]="article.content" [style]="{ height: '320px'}">
+            <ng-template pTemplate="header">
+                <span class="ql-formats"></span>
+            </ng-template>
+        </p-editor>
+    </div>
+    <div class="col-1"></div>
+</div>
 } @empty {
-    No articles found.
+No articles found.
 }

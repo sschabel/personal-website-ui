@@ -36,6 +36,8 @@ $gradient-bottom-left: linear-gradient(315deg, $rose-quartz, $alice-blue, $davys
 $gradient-radial: radial-gradient($rose-quartz, $alice-blue, $davys-gray, $raisin-black, $blue-munsell);
 
 @import "./primeng/buttons";
+@import "./primeng/chips";
+@import "./primeng/editor";
 @import "./primeng/panels";
 @import "./primeng/passwords";
 @import "./index";

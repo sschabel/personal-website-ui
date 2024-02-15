@@ -5,18 +5,22 @@ import { Article } from '@models/article';
 import { BlogService } from '@services/blog.service';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
+import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
 
 @Component({
   selector: 'app-articles-list',
   standalone: true,
-  imports: [ButtonModule, ChipModule, EditorModule, FormsModule],
+  imports: [ButtonModule, ChipModule, DividerModule, EditorModule, FormsModule],
   templateUrl: './articles-list.component.html',
   styleUrl: './articles-list.component.scss'
 })
 export class ArticlesListComponent implements OnInit {
 
   articles: Article[] = [];
+  quillModules: any = {
+    toolbar: false
+  };
 
   constructor(private blogService: BlogService, private router: Router) { }
 
