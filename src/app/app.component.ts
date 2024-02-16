@@ -9,7 +9,6 @@ import { AuthService } from '@services/auth.service';
 import { SpinnerComponent } from '@components/spinner/spinner.component';
 import { BlockUIModule } from 'primeng/blockui';
 import { BlockableDivComponent } from "./layout/blockable-div/blockable-div.component";
-import { getState } from '@ngrx/signals';
 
 @Component({
     selector: 'app-root',
@@ -24,7 +23,7 @@ export class AppComponent implements OnInit {
   loading: boolean = false;
   topMenuItems: SimpleMenuItem[] = [];
 
-  constructor(private authService: AuthService, private el: ElementRef, readonly store: GlobalStore){
+  constructor(private authService: AuthService, readonly store: GlobalStore){
     effect(() => {
       this.loading = this.store.loading();
     });
