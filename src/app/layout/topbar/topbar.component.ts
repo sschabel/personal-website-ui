@@ -20,9 +20,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
   currentMenuItemIndex: number = -1;
   navEndSub: Subscription | null = null;
 
-  constructor(private router: Router,
-    readonly store: GlobalStore,
-    private windowService: WindowService) { }
+  constructor(private router: Router, readonly store: GlobalStore, private windowService: WindowService) { }
 
   ngOnInit(): void {
     this.navEndSub = this.router.events.subscribe((event) => {

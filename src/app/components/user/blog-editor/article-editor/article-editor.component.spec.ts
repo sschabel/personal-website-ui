@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticleEditorComponent } from './article-editor.component';
+import { BlogService } from '@services/blog.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ArticleEditorComponent', () => {
   let component: ArticleEditorComponent;
@@ -8,7 +10,8 @@ describe('ArticleEditorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArticleEditorComponent]
+      imports: [ArticleEditorComponent, HttpClientTestingModule],
+      providers: [BlogService]
     })
     .compileComponents();
     

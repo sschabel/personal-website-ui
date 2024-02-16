@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Article } from '@models/article';
 import { GlobalStore } from '@ngrx/global.store';
 import { BlogService } from '@services/blog.service';
@@ -27,7 +26,7 @@ export class ArticlesListComponent implements OnInit {
     toolbar: false
   };
 
-  constructor(private blogService: BlogService, private router: Router, private store: GlobalStore) { }
+  constructor(private blogService: BlogService, private store: GlobalStore) { }
 
   ngOnInit(): void {
     this.store.updateLoading(true);

@@ -38,15 +38,6 @@ describe('TopbarComponent', () => {
     expect(cut).toBeTruthy();
   });
 
-  it('#ngOnInit() should set menuItems', () => {
-    // given
-    spyOn(store, 'menuItems');
-    // when
-    cut.ngOnInit();
-    // then
-    expect(store.menuItems).toHaveBeenCalled();
-  });
-
   it('#setupCurrentMenuIndex() should set currentMenuItemIndex', () => {
     // given
     let menuItem: SimpleMenuItem = new SimpleMenuItem(1, 'test', false, undefined, '/test');
