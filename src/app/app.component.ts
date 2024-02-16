@@ -1,4 +1,4 @@
-import { Component, ErrorHandler, OnInit } from '@angular/core';
+import { Component, ElementRef, ErrorHandler, OnInit, ViewChild, effect } from '@angular/core';
 import { FooterComponent } from '@layout/footer/footer.component';
 import { TopbarComponent } from '@layout/topbar/topbar.component';
 import { RouterOutlet } from '@angular/router';
@@ -6,25 +6,34 @@ import { GlobalErrorHandler } from '@handler/global-error.handler';
 import { SimpleMenuItem } from '@models/simple-menu-item';
 import { GlobalStore } from '@ngrx/global.store';
 import { AuthService } from '@services/auth.service';
+import { SpinnerComponent } from '@components/spinner/spinner.component';
+import { BlockUIModule } from 'primeng/blockui';
+import { BlockableDivComponent } from "./layout/blockable-div/blockable-div.component";
+import { getState } from '@ngrx/signals';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [TopbarComponent, FooterComponent, RouterOutlet],
-  providers: [AuthService, {provide: ErrorHandler, useClass: GlobalErrorHandler}],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    providers: [AuthService, { provide: ErrorHandler, useClass: GlobalErrorHandler }],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    imports: [BlockUIModule, TopbarComponent, FooterComponent, RouterOutlet, SpinnerComponent, BlockableDivComponent]
 })
 export class AppComponent implements OnInit {
 
+  loading: boolean = false;
   topMenuItems: SimpleMenuItem[] = [];
 
-  constructor(private authService: AuthService, readonly store: GlobalStore){}
-  
+  constructor(private authService: AuthService, private el: ElementRef, readonly store: GlobalStore){
+    effect(() => {
+      this.loading = this.store.loading();
+    });
+  }
+
   ngOnInit(): void {
     this.store.updateMenuItems(this.setupMenu());
     this.topMenuItems = this.store.menuItems();
-    this.authService.populateCsrfToken();
+    this.authService.populateCsrfToken().subscribe(() => this.store.updateLoading(false));
   }
 
   private setupMenu(): SimpleMenuItem[] {

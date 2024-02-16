@@ -26,8 +26,8 @@ export class AuthService {
         return this.http.get<User>(this.userUrl);
     }
 
-    public populateCsrfToken(): void {
-        this.http.get<void>(this.csrfUrl).subscribe();
+    public populateCsrfToken(): Observable<void> {
+        return this.http.get<void>(this.csrfUrl);
     }
 
     public setBearerTokenCookie(bearerToken: string): void {

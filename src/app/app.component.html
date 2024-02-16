@@ -1,9 +1,14 @@
-<app-topbar [menuItems]="topMenuItems"></app-topbar>
+<p-blockUI [blocked]="loading" [target]="blockableDiv">
+    <app-spinner></app-spinner>
+</p-blockUI>
+<app-blockable-div #blockableDiv>
+    <app-topbar [menuItems]="topMenuItems"></app-topbar>
 
-<div class="fullscreen">
-    <router-outlet />
-</div>
+    <div class="fullscreen">
+        <router-outlet />
+    </div>
 
-<footer>
-    <app-footer></app-footer>
-</footer>
+    <footer>
+        <app-footer></app-footer>
+    </footer>
+</app-blockable-div>

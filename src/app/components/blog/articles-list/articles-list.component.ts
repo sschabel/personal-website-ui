@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from '@models/article';
+import { GlobalStore } from '@ngrx/global.store';
 import { BlogService } from '@services/blog.service';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
@@ -26,11 +27,13 @@ export class ArticlesListComponent implements OnInit {
     toolbar: false
   };
 
-  constructor(private blogService: BlogService, private router: Router) { }
+  constructor(private blogService: BlogService, private router: Router, private store: GlobalStore) { }
 
   ngOnInit(): void {
+    this.store.updateLoading(true);
     this.blogService.getAllArticles().subscribe((articles: Article[]) => {
       this.articles = articles;
+      this.store.updateLoading(false);
     });
   }
 

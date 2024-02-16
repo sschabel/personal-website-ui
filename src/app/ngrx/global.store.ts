@@ -4,12 +4,14 @@ import { patchState, signalStore, withHooks, withMethods, withState } from '@ngr
 
 type GlobalState = {
   lastError: Error | null;
+  loading: boolean;
   menuItems: SimpleMenuItem[];
   user: User | null;
 };
 
 const initialState: GlobalState = {
   lastError: null,
+  loading: true,
   menuItems: [],
   user: null
 };
@@ -21,6 +23,10 @@ export const GlobalStore = signalStore(
 
     updateLastError(error: Error | null) {
       patchState(store, { lastError: error });
+    },
+
+    updateLoading(loading: boolean) {
+      patchState(store, { loading: loading });
     },
 
     updateMenuItems(menuItems: SimpleMenuItem[]) {
