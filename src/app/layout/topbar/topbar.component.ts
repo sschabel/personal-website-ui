@@ -54,6 +54,10 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.windowService.setHref(menuItem.url);
     }
 
+    if(menuItem.action) {
+      menuItem.action();
+    }
+
   }
 
   isActive(menuItem: SimpleMenuItem): boolean {

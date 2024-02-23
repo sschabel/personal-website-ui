@@ -24,29 +24,24 @@ export class AppComponent implements OnInit {
   loggedIn: boolean = false;
   topMenuItems: SimpleMenuItem[] = [];
   login: SimpleMenuItem = new SimpleMenuItem(5, 'Login', false, 'fas fa-right-to-bracket', '/login');
-  profile: SimpleMenuItem = new SimpleMenuItem(6, 'Profile', false, 'fas fa-right-to-bracket', '/user');
-  logout: SimpleMenuItem = new SimpleMenuItem(7, 'Logout', false, 'fas fa-right-to-bracket', '/logout');
+  profile: SimpleMenuItem = new SimpleMenuItem(6, 'Profile', false, 'fas fa-address-card', '/user');
+  logout: SimpleMenuItem = new SimpleMenuItem(7, 'Logout', false, 'fas fa-right-from-bracket', undefined,
+                                              undefined, () => this.authService.logout());
 
   constructor(private authService: AuthService, readonly store: GlobalStore){
     effect(() => {
       this.loading = this.store.loading();
       if(this.store.user() === null) {
-        let menuItems: SimpleMenuItem[] = [];
-        menuItems = this.setupMenu();
-        menuItems.push(this.login);
-        this.topMenuItems = menuItems;
+        this.setupAnonymousMenuItems();
       } else {
-        let menuItems: SimpleMenuItem[] = [];
-        menuItems = this.setupMenu();
-        menuItems.push(this.logout);
-        menuItems.push(this.profile);
-        this.topMenuItems = menuItems;
+        this.setupAuthenticatedMenuItems();
       };
     });
   }
 
   ngOnInit(): void {
     this.authService.populateCsrfToken().subscribe(() => this.store.updateLoading(false));
+    this.store.updateMenuItems(this.setupMenu());
   }
 
   private setupMenu(): SimpleMenuItem[] {
@@ -62,5 +57,22 @@ export class AppComponent implements OnInit {
     menuItems.push(github);
     return menuItems;
   }
+
+  setupAnonymousMenuItems(): void {
+    let menuItems: SimpleMenuItem[] = [];
+    menuItems = this.setupMenu();
+    menuItems.push(this.login);
+    this.topMenuItems = menuItems;
+  }
+
+  setupAuthenticatedMenuItems(): void {
+    let menuItems: SimpleMenuItem[] = [];
+    menuItems = this.setupMenu();
+    menuItems.push(this.logout);
+    menuItems.push(this.profile);
+    this.topMenuItems = menuItems;
+  }
+
+
 
 }

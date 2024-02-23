@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoginRequest } from "@models/login-request";
 import { LoginResponse } from "@models/login-response";
 import { User } from "@models/user";
@@ -13,10 +14,11 @@ export class AuthService {
 
     private csrfUrl: string = '/csrf';
     private loginUrl: string = '/login';
+    private logoutUrl: string = '/logout';
     private userUrl: string = '/user';
     private bearerTokenCookieName: string = 'pw-api_bearer';
 
-    constructor(private cookieService: CookieService, private http: HttpClient){}
+    constructor(private cookieService: CookieService, private http: HttpClient, private router: Router){}
 
     public loginRequest(username: string, password: string): Observable<LoginResponse> {
         return this.http.post<LoginResponse>(this.loginUrl, new LoginRequest(username, password));
@@ -36,6 +38,10 @@ export class AuthService {
 
     public getBearerToken(): string {
         return this.cookieService.get(this.bearerTokenCookieName);
+    }
+
+    public logout(): void {
+        this.http.post<void>(this.logoutUrl, '').subscribe(() => this.router.navigateByUrl('/logout'));
     }
 
 }

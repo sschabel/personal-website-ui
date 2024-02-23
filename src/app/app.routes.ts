@@ -13,6 +13,7 @@ import { BlogEditorComponent } from '@components/user/blog-editor/blog-editor.co
 import { UserComponent } from '@components/user/user.component';
 import { ArticlesListComponent } from '@components/blog/articles-list/articles-list.component';
 import { ArticleEditorComponent } from '@components/user/blog-editor/article-editor/article-editor.component';
+import { LogoutComponent } from '@components/logout/logout.component';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,10 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'logout',
+        component: LogoutComponent
     },
     {
         path: 'professional-details',
