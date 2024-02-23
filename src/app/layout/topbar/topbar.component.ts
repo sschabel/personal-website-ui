@@ -67,8 +67,8 @@ export class TopbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  isLoginItem(menuItem: SimpleMenuItem): boolean {
-    return menuItem.label === 'Login';
+  isUserItem(menuItem: SimpleMenuItem): boolean {
+    return menuItem.label === 'Login' || menuItem.label === 'Profile' || menuItem.label === 'Logout';
   }
 
 }

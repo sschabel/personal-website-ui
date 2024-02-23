@@ -1,12 +1,15 @@
 <div class="topbar">
-    <ng-container *ngFor="let menuItem of menuItems">
-        <a *ngIf="isLoginItem(menuItem)" [class]="isActive(menuItem) ? 'active login' : 'login'" (click)="triggerAction(menuItem)">
+        @for (menuItem of menuItems; track $index) {
+        @if(isUserItem(menuItem)){
+        <a [class]="isActive(menuItem) ? 'active login' : 'login'" (click)="triggerAction(menuItem)">
                 <i [class]="menuItem.icon"></i>
                 {{menuItem.label}}
         </a>
-        <a *ngIf="!isLoginItem(menuItem)" [class]="isActive(menuItem) ? 'active ' : ''" (click)="triggerAction(menuItem)">
+        } @else {
+        <a [class]="isActive(menuItem) ? 'active ' : ''" (click)="triggerAction(menuItem)">
                 <i [class]="menuItem.icon"></i>
                 {{menuItem.label}}
         </a>
-    </ng-container>
-  </div>
+        }
+        }
+</div>

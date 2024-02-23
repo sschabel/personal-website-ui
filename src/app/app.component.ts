@@ -21,17 +21,31 @@ import { BlockableDivComponent } from "./layout/blockable-div/blockable-div.comp
 export class AppComponent implements OnInit {
 
   loading: boolean = false;
+  loggedIn: boolean = false;
   topMenuItems: SimpleMenuItem[] = [];
+  login: SimpleMenuItem = new SimpleMenuItem(5, 'Login', false, 'fas fa-right-to-bracket', '/login');
+  profile: SimpleMenuItem = new SimpleMenuItem(6, 'Profile', false, 'fas fa-right-to-bracket', '/user');
+  logout: SimpleMenuItem = new SimpleMenuItem(7, 'Logout', false, 'fas fa-right-to-bracket', '/logout');
 
   constructor(private authService: AuthService, readonly store: GlobalStore){
     effect(() => {
       this.loading = this.store.loading();
+      if(this.store.user() === null) {
+        let menuItems: SimpleMenuItem[] = [];
+        menuItems = this.setupMenu();
+        menuItems.push(this.login);
+        this.topMenuItems = menuItems;
+      } else {
+        let menuItems: SimpleMenuItem[] = [];
+        menuItems = this.setupMenu();
+        menuItems.push(this.logout);
+        menuItems.push(this.profile);
+        this.topMenuItems = menuItems;
+      };
     });
   }
 
   ngOnInit(): void {
-    this.store.updateMenuItems(this.setupMenu());
-    this.topMenuItems = this.store.menuItems();
     this.authService.populateCsrfToken().subscribe(() => this.store.updateLoading(false));
   }
 
@@ -40,14 +54,12 @@ export class AppComponent implements OnInit {
     let blog: SimpleMenuItem = new SimpleMenuItem(2, 'Blog', false, 'fas fa-blog', '/blog');
     let professionalDetails: SimpleMenuItem = new SimpleMenuItem(3, 'Professional Details', false, 'fas fa-user-tie', '/professional-details');
     let github: SimpleMenuItem = new SimpleMenuItem(4, 'GitHub', true, 'fa-brands fa-github', undefined, 'https://github.com/sschabel');
-    let login: SimpleMenuItem = new SimpleMenuItem(5, 'Login', false, 'fas fa-right-to-bracket', '/login');
 
     let menuItems: SimpleMenuItem[] = [];
     menuItems.push(landing);
     menuItems.push(blog);
     menuItems.push(professionalDetails);
     menuItems.push(github);
-    menuItems.push(login);
     return menuItems;
   }
 
