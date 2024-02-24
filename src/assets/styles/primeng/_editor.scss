@@ -1,9 +1,9 @@
-.articles-list .p-editor-container .p-editor-content {
+.article .p-editor-container .p-editor-content {
     border-radius: 6px;
     border-color: $panel-content-bg-color;
 }
 
-.articles-list .p-editor-container .p-editor-content .ql-editor {
+.article .p-editor-container .p-editor-content .ql-editor {
     background-color: $panel-content-bg-color;
     color: $primary-text-color;
     scrollbar-width: thin;
@@ -12,6 +12,24 @@
     border-color: $panel-content-bg-color;
 }
 
-.articles-list .p-editor-container .p-editor-content.ql-snow {
+.article .p-editor-container .p-editor-content.ql-snow {
     border-color: $panel-content-bg-color;
+}
+
+.article-editor .p-editor-container .p-editor-content.ql-snow {
+    border-color: $panel-content-bg-color;
+}
+
+.article-editor .p-editor-container .p-editor-content .ql-editor {
+    background-color: $panel-content-bg-color;
+    color: $primary-text-color;
+    scrollbar-width: thin;
+    max-height: 367px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-color: $panel-content-bg-color;
+}
+
+.article-editor .p-editor-container .p-editor-toolbar.ql-snow {
+    background-color: $topbar-bg-color;
 }

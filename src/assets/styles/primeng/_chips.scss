@@ -1,8 +1,18 @@
-.articles-list .p-chip {
+.article .p-chip {
     background: $topbar-bg-color;
 }
 
-.articles-list .p-chip .p-chip-text {
+.article .p-chip .p-chip-text {
     background: $topbar-bg-color;
     color: $primary-text-color;
+}
+
+.p-chips .p-chips-multiple-container .p-chips-token {
+    background: $topbar-bg-color;
+    color: $primary-text-color;
+}
+
+.p-chips .p-chips-multiple-container {
+    background: $panel-content-bg-color;
+    border: none;
 }

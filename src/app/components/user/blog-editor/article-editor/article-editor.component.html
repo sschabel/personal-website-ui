@@ -1,23 +1,19 @@
-<p>article-editor works!</p>
 <form [formGroup]="articleForm" (ngSubmit)="submitArticle()">
-    <div class="flex flex-column">
-        <div class="flex">
-            <span class="p-float-label">
-                <input id="title" type="text" pInputText formControlName="title" />
-                <label for="title">Title</label>
-            </span>
-        </div>
-        <div class="flex">
-            <p-chips formControlName="tags" [max]="maxTagsAllowed"></p-chips>
-        </div>
-        <div class="flex">
-            <p-editor formControlName="content" [style]="{ height: '320px' }"></p-editor>
-        </div>
-        <div class="flex">
-            <p-button [styleClass]="'mt-5 mb-5'" label="Cancel" icon="fas fa-xmark"
-            (onClick)="cancel()"></p-button>
-            <p-button [styleClass]="'mt-5 mb-5'" label="Save" icon="fas fa-floppy-disk" type="submit"
-                [disabled]="!articleForm.valid"></p-button>
-        </div>
+    <div class="flex justify-content-center mt-5">
+        <span class="p-float-label">
+            <input [class]="'title'" id="title" type="text" pInputText formControlName="title" />
+            <label for="title">Title</label>
+        </span>
+    </div>
+    <div class="flex justify-content-center mt-2">
+        <p-chips [class]="'article'" formControlName="tags" [max]="maxTagsAllowed"></p-chips>
+    </div>
+    <div class="flex justify-content-center mt-2">
+        <p-editor [class]="'article-editor'" formControlName="content" [style]="{ height: '320px' }"></p-editor>
+    </div>
+    <div class="flex justify-content-center mt-2">
+        <p-button [styleClass]="'mt-5 mb-5 mr-2'" label="Cancel" icon="fas fa-xmark" (onClick)="cancel()"></p-button>
+        <p-button [styleClass]="'mt-5 mb-5'" label="Save" icon="fas fa-floppy-disk" type="submit"
+            [disabled]="!articleForm.valid"></p-button>
     </div>
 </form>

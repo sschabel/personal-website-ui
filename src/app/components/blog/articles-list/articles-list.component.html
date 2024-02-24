@@ -22,7 +22,7 @@
                 {{article.title}}
             </h2>
         </div>
-        <p-editor [class]="'articles-list'" [modules]="quillModules" [readonly]="true" [(ngModel)]="article.content">
+        <p-editor [class]="'article'" [modules]="quillModules" [readonly]="true" [(ngModel)]="article.content">
             <ng-template pTemplate="header">
                 <span class="ql-formats"></span>
             </ng-template>
@@ -31,7 +31,7 @@
             <div class="flex align-items-center">
                 <p class="tag-label mr-1">Tags:</p>
                 @for (tag of article.tags; track $index) {
-                <p-chip [class]="'articles-list mr-1'" [label]="tag"></p-chip>
+                <p-chip [class]="'article mr-1'" [label]="tag"></p-chip>
                 }
             </div>
         </div>
