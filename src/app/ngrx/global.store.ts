@@ -33,7 +33,7 @@ export const GlobalStore = signalStore(
       patchState(store, { menuItems: menuItems })
     },
 
-    updateUser(user: User) {
+    updateUser(user: User | null) {
       patchState(store, {user: user})
     }
 
