@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,6 +21,7 @@ import { PasswordModule } from 'primeng/password';
 })
 export class LoginComponent implements OnInit {
 
+  loginErrorMessage: string | null = null;
   loginForm!: FormGroup;
 
   constructor(private authService: AuthService, readonly store: GlobalStore, private router: Router) { }
@@ -36,9 +37,14 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.loginRequest(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value)
         .subscribe((response: LoginResponse) => {
-          this.authService.setBearerTokenCookie(response.bearerToken);
-          this.store.updateUser(response.user);
-          this.router.navigateByUrl('/user');
+          if(response.errorMessage) {
+            this.loginErrorMessage = response.errorMessage;
+          } else {
+            this.loginErrorMessage = null;
+            this.authService.setBearerTokenCookie(response.bearerToken);
+            this.store.updateUser(response.user);
+            this.router.navigateByUrl('/user');
+          }
         });
     }
   }

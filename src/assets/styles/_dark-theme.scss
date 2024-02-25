@@ -9,6 +9,7 @@ $primary-text-color: $white;
 $footer-bg-color: $darker-paynes-gray;
 $footer-hover-text-color: $moonstone;
 $footer-text-color: $primary-text-color;
+$invalid-text-color: red;
 $main-bg-color: $black;
 $normal-button-bg-color: $paynes-gray;
 $outlined-button-text-color: $primary-text-color;
@@ -62,6 +63,7 @@ $gradient-radial: radial-gradient($rose-quartz, $alice-blue, $davys-gray, $raisi
     --footer-bg-color: #{$footer-bg-color};
     --footer-hover-text-color: #{$footer-hover-text-color};
     --footer-text-color: #{$footer-text-color};
+    --invalid-text-color: #{$invalid-text-color};
     --panel-content-bg-color: #{$panel-content-bg-color};
     --topbar-bg-color: #{$topbar-bg-color};
     --topbar-text-color: #{$topbar-text-color};

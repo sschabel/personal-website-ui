@@ -13,6 +13,9 @@
                     <p-password id="password" formControlName="password" [feedback]="false"></p-password>
                     <label for="password">Password</label>
                 </span>
+                @if (loginErrorMessage) {
+                <small class="invalid">{{loginErrorMessage}}</small>
+                }
                 <p-button [styleClass]="'login-button mt-5 mb-5'" label="Login" icon="fas fa-right-to-bracket" type="submit" 
                     [disabled]="!loginForm.valid"></p-button>
             </form>
