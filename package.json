@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run headless-test && ng serve",
-    "build": "npm run headless-test && ng build --base-href ./",
+    "build": "npm run headless-test && ng build",
     "watch": "npm run headless-test && ng build --watch --configuration development",
     "test": "ng test",
     "headless-test": "ng test --browsers=ChromeHeadless --watch=false"
