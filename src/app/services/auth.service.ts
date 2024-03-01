@@ -22,8 +22,8 @@ export class AuthService {
     constructor(private cookieService: CookieService, private http: HttpClient,
         private router: Router, private store: GlobalStore){}
 
-    public loginRequest(username: string, password: string): Observable<LoginResponse> {
-        return this.http.post<LoginResponse>(this.loginUrl, new LoginRequest(username, password));
+    public loginRequest(username: string, password: string, reCaptchaToken: string): Observable<LoginResponse> {
+        return this.http.post<LoginResponse>(this.loginUrl, new LoginRequest(username, password, reCaptchaToken));
     }
 
     public getUserDetails(): Observable<User> {

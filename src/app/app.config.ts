@@ -7,12 +7,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptor
 import { GlobalErrorHandler } from '@handler/global-error.handler';
 import { BearerTokenInterceptor } from './interceptors/bearer-token.interceptor';
 import { ApiPrependerInterceptor } from './interceptors/api-prepender.interceptor';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+import { environment } from 'environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(HttpClientModule),
-    importProvidersFrom([BrowserAnimationsModule]),
+    importProvidersFrom([BrowserAnimationsModule, HttpClientModule, RecaptchaV3Module]),
     provideHttpClient(
       withInterceptorsFromDi()
     ),
@@ -26,6 +27,7 @@ export const appConfig: ApplicationConfig = {
       useClass: BearerTokenInterceptor, // adds the Bearer Token to the Authorization header on each HTTP request
       multi: true,
     },
-    [{provide: ErrorHandler, useClass: GlobalErrorHandler}] // use our custom, Global Error Handler
+    [{provide: ErrorHandler, useClass: GlobalErrorHandler}], // use our custom, Global Error Handler
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: environment.recaptchaSiteKey }
   ]
 };

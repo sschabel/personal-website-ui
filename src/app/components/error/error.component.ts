@@ -17,6 +17,7 @@ export class ErrorComponent implements OnInit {
 
   ngOnInit(): void {
     this.error = this.store.lastError();
+    this.store.updateLoading(false);
   }
 
 
