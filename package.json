@@ -3,12 +3,11 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng test --browsers=ChromeHeadless --watch=false && ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "npm run headless-test && ng serve",
+    "build": "npm run headless-test && ng build",
+    "watch": "npm run headless-test && ng build --watch --configuration development",
     "test": "ng test",
-    "hl-test": "ng test --browsers=ChromeHeadless --watch=false",
-    "full-build": "ng test --browsers=ChromeHeadless --watch=false && ng build"
+    "headless-test": "ng test --browsers=ChromeHeadless --watch=false"
   },
   "private": true,
   "dependencies": {
