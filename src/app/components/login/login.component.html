@@ -5,19 +5,28 @@
         </div>
         <div class="login-body flex justify-content-center">
             <form [formGroup]="loginForm" (ngSubmit)="login()">
-                <span class="p-float-label">
-                    <input id="username" type="text" pInputText formControlName="username" />
-                    <label for="username">Username</label>
-                </span>
-                <span class="p-float-label mt-5">
-                    <p-password id="password" formControlName="password" [feedback]="false"></p-password>
-                    <label for="password">Password</label>
-                </span>
-                @if (loginErrorMessage) {
-                <small class="invalid">{{loginErrorMessage}}</small>
-                }
-                <p-button [styleClass]="'login-button mt-5 mb-5'" label="Login" icon="fas fa-right-to-bracket" type="submit" 
-                    [disabled]="!loginForm.valid"></p-button>
+                <div class="login-body flex flex-column align-items-center">
+                    <span class="login-element p-float-label">
+                        <input id="username" type="text" pInputText formControlName="username" />
+                        <label for="username">Username</label>
+                    </span>
+                    <span class="login-element p-float-label mt-5">
+                        <p-password id="password" formControlName="password" [feedback]="false"></p-password>
+                        <label for="password">Password</label>
+                    </span>
+                    @if (loginErrorMessage) {
+                    <small class="invalid">{{loginErrorMessage}}</small>
+                    }
+                    <span class="login-element">
+                        <p-button [styleClass]="'login-button mt-5 mb-5'" label="Login" icon="fas fa-right-to-bracket" type="submit" 
+                            [disabled]="!loginForm.valid"></p-button>
+                    </span>
+                    <small class="login-element login-notice mb-5">
+                        This site is protected by reCAPTCHA and the Google
+                            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                    </small>
+            </div>
             </form>
         </div>
     </div>

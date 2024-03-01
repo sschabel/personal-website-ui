@@ -1,6 +1,6 @@
 .login-card {
     min-width: 367px;
-    max-width: 70%;
+    max-width: 367px;
     background: white;
     border-radius: 6px;
     border: 1px;
@@ -26,4 +26,13 @@
 
 .invalid {
     color: var(--invalid-text-color);
+}
+
+.login-notice {
+    overflow-wrap: break-word;
+    width: 80%;
+}
+
+.login-element {
+    width: 68%;
 }
